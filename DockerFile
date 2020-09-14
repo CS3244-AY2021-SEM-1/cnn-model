@@ -18,7 +18,7 @@ WORKDIR /opt
 RUN pip3 install -r requirements.txt
 
 # Jupyter and Tensorboard ports
-EXPOSE 8888 6006
+EXPOSE 8889 6006
 
 # Store notebooks in this mounted directory
 VOLUME /notebooks
