@@ -8,14 +8,17 @@ RUN apt-get update && apt-get install -y \
 	python3-opencv && \
     rm -rf /var/lib/apt/lists/*
 
-RUN ["mkdir", "notebooks"]
-COPY conf/.jupyter /root/.jupyter
-COPY run_jupyter.sh /
 COPY requirements.txt /opt/requirements.txt
 
 WORKDIR /opt
-
 RUN pip3 install -r requirements.txt
+
+WORKDIR /
+COPY run_jupyter.sh /
+
+RUN ["mkdir", "notebooks"]
+COPY conf/.jupyter /root/.jupyter
+
 
 # Jupyter and Tensorboard ports
 EXPOSE 8889 6006
