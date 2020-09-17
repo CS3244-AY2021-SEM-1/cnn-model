@@ -4,6 +4,7 @@
 2. Open up powershell and `cd` to the directory containing the DockerFile
 3. Run ` docker build -f Dockerfile -t <image-name> .`
 4. Open powershell and run `docker run -it -p 8889:8889 -d -v $pwd/notebooks:/notebooks <image-name>:latest`
+5. Run `git submodule update --init --recursive`
 
 
 # Updating requirements.txt
