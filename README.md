@@ -13,7 +13,7 @@
 3. Run `docker build -f DockerFile -t <image-name> .`
 4. Run `pwd` and copy the result into your clipboard
 5. Run `dir=<clipboard-ctrl-v>` <- basically just assign the variable dir to the copied result from pwd
-6. Run "docker run -it -p 8889:8889 -d -v `$dir/notebooks`:`/notebooks` `$dir/models`:`/models` `$dir/data`:`/data` `$dir/output`:`/output` <image-name>"
+6. Run `docker run -it -p 8889:8889 -d -v $dir/notebooks:/notebooks -v $dir/models:/models -v $dir/data:/data -v $dir/output:/output <image-name>`
 
 # Updating requirements.txt
 * If you have installed a new libary, remember to update requirements.txt with the following code `pip freeze > requirements.txt`
