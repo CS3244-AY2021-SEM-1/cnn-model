@@ -26,4 +26,7 @@ EXPOSE 8889 6006
 # Store notebooks in this mounted directory
 VOLUME /notebooks
 
+# Store src in this mounted directory
+VOLUME /src
+
 CMD ["/run_jupyter.sh"]
