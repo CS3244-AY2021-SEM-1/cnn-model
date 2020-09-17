@@ -1,0 +1,6 @@
+[submodule "src/mcnn-pytorch"]
+	path = src/mcnn-pytorch
+	url = https://github.com/CS3244-AY2021-SEM-1/mcnn-pytorch.git
+[submodule "src/csrnet-tensorflow"]
+	path = src/csrnet-tensorflow
+	url = https://github.com/CS3244-AY2021-SEM-1/csrnet-tensorflow.git
