@@ -18,10 +18,11 @@ COPY run_jupyter.sh /
 
 RUN chmod +x run_jupyter.sh
 
-RUN ["mkdir", "notebooks"]
-RUN ["mkdir", "models"]
-RUN ["mkdir", "data"]
-RUN ["mkdir", "output"]
+RUN ["mkdir", "src"]
+RUN ["mkdir", "src/notebooks"]
+RUN ["mkdir", "src/models"]
+RUN ["mkdir", "src/data"]
+RUN ["mkdir", "src/output"]
 COPY conf/.jupyter /root/.jupyter
 
 
@@ -29,15 +30,15 @@ COPY conf/.jupyter /root/.jupyter
 EXPOSE 8889 6006
 
 # Store notebooks in this mounted directory
-VOLUME /notebooks
+VOLUME src/notebooks
 
 # Store models in this mounted directory
-VOLUME /models
+VOLUME src/models
 
 # Store datasets in this mounted directory
-VOLUME /data
+VOLUME src/data
 
 # Store models output in this mounted directory
-VOLUME /output
+VOLUME src/output
 
 CMD ["/run_jupyter.sh"]
