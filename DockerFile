@@ -17,6 +17,9 @@ WORKDIR /
 COPY run_jupyter.sh /
 
 RUN ["mkdir", "notebooks"]
+RUN ["mkdir", "models"]
+RUN ["mkdir", "data"]
+RUN ["mkdir", "output"]
 COPY conf/.jupyter /root/.jupyter
 
 
@@ -26,7 +29,13 @@ EXPOSE 8889 6006
 # Store notebooks in this mounted directory
 VOLUME /notebooks
 
-# Store src in this mounted directory
-VOLUME /src
+# Store models in this mounted directory
+VOLUME /models
+
+# Store datasets in this mounted directory
+VOLUME /data
+
+# Store models output in this mounted directory
+VOLUME /output
 
 CMD ["/run_jupyter.sh"]

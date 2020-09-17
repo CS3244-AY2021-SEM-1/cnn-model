@@ -3,7 +3,7 @@
     - Windows: Ensure that you have the latest version of windows (2004) and download the stable version of docker
 2. Open up powershell and `cd` to the directory containing the DockerFile
 3. Run ` docker build -f Dockerfile -t <image-name> .`
-4. Open powershell and run `docker run -it -p 8889:8889 -d -v $pwd/notebooks:/notebooks -v $pwd/src:/src <image-name>:latest`
+4. Open powershell and run `docker run -it -p 8889:8889 -d -v $pwd/notebooks:/notebooks -v $pwd/models:/models -v $pwd/data:/data -v $pwd/output:/output <image-name>:latest`
 5. Run `git submodule update --init --recursive`
 
 
