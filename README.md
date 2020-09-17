@@ -16,3 +16,5 @@
 import sys 
 sys.path.append('../')
 ```
+
+# Make sure you complete this procedure right
