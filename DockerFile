@@ -16,7 +16,13 @@ RUN pip3 install -r requirements.txt --default-timeout=100
 WORKDIR /
 COPY run_jupyter.sh /
 
-RUN ["mkdir", "notebooks"]
+RUN chmod +x run_jupyter.sh
+
+RUN ["mkdir", "src"]
+RUN ["mkdir", "src/notebooks"]
+RUN ["mkdir", "src/models"]
+RUN ["mkdir", "src/data"]
+RUN ["mkdir", "src/output"]
 COPY conf/.jupyter /root/.jupyter
 
 
@@ -24,6 +30,15 @@ COPY conf/.jupyter /root/.jupyter
 EXPOSE 8889 6006
 
 # Store notebooks in this mounted directory
-VOLUME /notebooks
+VOLUME src/notebooks
+
+# Store models in this mounted directory
+VOLUME src/models
+
+# Store datasets in this mounted directory
+VOLUME src/data
+
+# Store models output in this mounted directory
+VOLUME src/output
 
 CMD ["/run_jupyter.sh"]
