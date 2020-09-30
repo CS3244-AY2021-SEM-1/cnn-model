@@ -4,6 +4,7 @@ c.NotebookApp.ip = '*'
 c.NotebookApp.allow_remote_access = True
 c.NotebookApp.open_browser = False  # do not open a browser window by default when using notebooks
 c.NotebookApp.token = '' # No token. Always use jupyter over ssh tunnel
+c.NotebookApp.password = u'argon2:$argon2id$v=19$m=10240,t=10,p=8$vQgbgQEMLTNJf/Xb4VGbKQ$oJJ19QwA9C0/kfS8RjQIFw'
 c.NotebookApp.notebook_dir = '/src'
 c.NotebookApp.allow_root = True # Allow to run Jupyter from root user inside Docker container
 c.NotebookApp.allow_origin = '*'

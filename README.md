@@ -26,3 +26,9 @@ sys.path.append('../')
 ```
 
 # Make sure you complete this procedure right
+
+
+# SSH into AWS EC2 Instances
+1. `cd` into the directory containing the downloaded private key for the instance you want to SSH into
+2. Run the command associated with the EC2 instance private key sent on slack
+3. If you need to save your output to git or update the code, just do the same commands you on your local and key in your username and password for github when prompted.
