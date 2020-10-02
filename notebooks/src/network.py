@@ -58,20 +58,10 @@ def np_to_variable(x, is_cuda=True, is_training=False, dtype=torch.FloatTensor):
     '''Converts the numpy matrix to a tensor before it gets fed into the NN
     - Does preprocessing step is included here
     '''
-    if is_training:
-        v = Variable(
-            torch.as_tensor(x).type(dtype)
-            )
-    else:
-        v = Variable(
-            torch.as_tensor(x).type(dtype), 
-            requires_grad=False, 
-            volatile=True
-            )
     
     if is_cuda: v = v.cuda()
     
-    return v
+    return Variable(torch.as_tensor(x).type(dtype))
 
 
 def set_trainable(model, requires_grad):

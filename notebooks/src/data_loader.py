@@ -76,7 +76,7 @@ class ImageDataLoader():
                 den = f['density'][()]
 
                 blob['data'] = img.reshape(1, 3, img.shape[0], img.shape[1])
-                blob['gt_density'] = den.reshape(1, 1, img.shape[0], img.shape[1])
+                blob['gt_density'] = den.reshape(1, 1, den.shape[0], den.shape[1])
                 self.blob_list[idx] = blob
 
             yield blob
