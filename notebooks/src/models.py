@@ -18,18 +18,27 @@ class MCNN(nn.Module):
         super(MCNN, self).__init__()
         
         self.branch1 = nn.Sequential(Conv2d( 3, 16, 9, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(16, 32, 7, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(32, 16, 7, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(16,  8, 7, padding='same', bn=bn))
         
         self.branch2 = nn.Sequential(Conv2d( 3, 20, 7, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(20, 40, 5, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(40, 20, 5, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(20, 10, 5, padding='same', bn=bn))
         
         self.branch3 = nn.Sequential(Conv2d( 3, 24, 5, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(24, 48, 3, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(48, 24, 3, padding='same', bn=bn),
+                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(24, 12, 3, padding='same', bn=bn))
         
         self.fuse    = nn.Sequential(Conv2d(30,  1, 1, padding='same', bn=bn))
@@ -99,3 +108,23 @@ class CSRNet(nn.Module):
             elif isinstance(m, nn.Linear):
                 nn.init.normal_(m.weight, 0, 0.01)
                 nn.init.constant_(m.bias, 0)
+
+class SGNet(nn.Module):
+    '''
+    SGNet CNN
+    '''
+
+    def __init__(self, bn=False):
+        super(SGNet, self).__init__()
+
+        self.branch1 = nn.Sequential()
+
+        self.branch2 = nn.Sequential()
+
+        self.branch3 = nn.Sequential()
+
+        self.fuse = nn.Sequential()
+
+    def forward(self, im_data):
+        x = self.column(im_data)
+        return x
