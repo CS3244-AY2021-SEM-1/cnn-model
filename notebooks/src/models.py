@@ -22,7 +22,6 @@ class MCNN(nn.Module):
                                      Conv2d(16, 32, 7, padding='same', bn=bn),
                                      nn.MaxPool2d(2, stride=2),
                                      Conv2d(32, 16, 7, padding='same', bn=bn),
-                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(16,  8, 7, padding='same', bn=bn))
         
         self.branch2 = nn.Sequential(Conv2d( 3, 20, 7, padding='same', bn=bn),
@@ -30,7 +29,6 @@ class MCNN(nn.Module):
                                      Conv2d(20, 40, 5, padding='same', bn=bn),
                                      nn.MaxPool2d(2, stride=2),
                                      Conv2d(40, 20, 5, padding='same', bn=bn),
-                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(20, 10, 5, padding='same', bn=bn))
         
         self.branch3 = nn.Sequential(Conv2d( 3, 24, 5, padding='same', bn=bn),
@@ -38,7 +36,6 @@ class MCNN(nn.Module):
                                      Conv2d(24, 48, 3, padding='same', bn=bn),
                                      nn.MaxPool2d(2, stride=2),
                                      Conv2d(48, 24, 3, padding='same', bn=bn),
-                                     nn.MaxPool2d(2, stride=2),
                                      Conv2d(24, 12, 3, padding='same', bn=bn))
         
         self.fuse    = nn.Sequential(Conv2d(30,  1, 1, padding='same', bn=bn))
