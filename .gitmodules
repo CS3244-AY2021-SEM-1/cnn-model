@@ -7,3 +7,6 @@
 [submodule "models/csrnet_pytorch"]
 	path = models/csrnet_pytorch
 	url = https://github.com/CS3244-AY2021-SEM-1/csrnet-pytorch.git
+[submodule "models/smc"]
+	path = models/smc
+	url = https://github.com/CS3244-AY2021-SEM-1/smc.git
