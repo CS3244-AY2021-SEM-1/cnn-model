@@ -41,12 +41,24 @@ class ImageDataLoader():
                 blob = {}
                 f = h5py.File(fname, "r")
 
+                # reading the data
                 img = f['image'][()]
-                blob['data'] = img.reshape((1, 3, img.shape[0], img.shape[1]))
-
                 den = f['density'][()]
-                blob['gt_density'] = den.reshape((1, 1, den.shape[0], den.shape[1]))
 
+                # target shape
+                target_shape = (720, 1280)
+                divide = 2**num_pool
+                gt_target_shape = (720//divide, 1280//divide)
+
+                # resizing with cv2
+                img_resized = cv2.resize(img, target_shape, interpolation = cv2.INTER_CUBIC)
+                gt_resized = cv2.resize(den, gt_target_shape, interpolation = cv2.INTER_CUBIC)
+
+                # if BW image, skip
+                if img_resized == (target_shape[1], target_shape[0]): continue
+
+                blob['data'] = img_resized.reshape(1, 3, target_shape[0], target_shape[1])
+                blob['gt_density'] = gt_resized.reshape(1, 1, gt_target_shape[0], gt_target_shape[1])
                 self.blob_list[idx] = blob
 
                 idx += 1
@@ -85,6 +97,9 @@ class ImageDataLoader():
                 # resizing with cv2
                 img_resized = cv2.resize(img, target_shape, interpolation = cv2.INTER_CUBIC)
                 gt_resized = cv2.resize(den, gt_target_shape, interpolation = cv2.INTER_CUBIC)
+
+                # if BW image, skip
+                if img_resized == (target_shape[1], target_shape[0]): continue
 
                 blob['data'] = img_resized.reshape(1, 3, target_shape[0], target_shape[1])
                 blob['gt_density'] = gt_resized.reshape(1, 1, gt_target_shape[0], gt_target_shape[1])
